@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All Posts
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Posts</h1>
+
+    {{% if articles|length > 0 %}}
+        {% for element in articles %}
+        <div class="alert alert-info">
+            <h2>{{ element.title }}</h2>
+            <p>{{ element.intro }}</p>
+            <p><b>Date: {{ element.date.date() }}</b></p>
+            <a href="/posts/{{element.id}}" class = "btn btn-warning">More</a>
+        </div>
+        {% endfor %}
+    {{%else%}}
+    <p>No posts yet</p>
+    {{%endif%}}
+</div>
+{% endblock %}
